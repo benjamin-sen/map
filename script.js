@@ -21,8 +21,6 @@ const cartoLight = L.tileLayer(
   }
 );
 
-const API_BASE = "https://benjamin-tracking.onrender.com";
-
 // --- 2) Groupe pour les traces ---
 const tracesGroup = L.layerGroup().addTo(map);
 
@@ -108,6 +106,14 @@ gpxFiles.forEach(file => {
   );
 });
 
+polyline_options: {
+  color: EIGENGRAU,
+  weight: 2,
+  opacity: 0.75,
+  lineCap: "round",
+  lineJoin: "round"
+}
+
 // --- 4) Contrôle des couches ---
 const baseLayers = {
   "GEBCO gris (NOAA)": gebcoGray,
@@ -119,72 +125,4 @@ const overlays = {
 };
 
 L.control.layers(baseLayers, overlays, { collapsed: false }).addTo(map);
-
-// --- 5) Trace LIVE de Benjamin ---
-
-let liveCoords = [];
-let liveLine = null;
-let liveMarker = null;
-
-async function updateLiveTrack() {
-  try {
-    const response = await fetch(
-      `${API_BASE}/api/live-track?track_id=live`
-    );
-
-    if (!response.ok) {
-      console.warn("Réponse non OK du serveur live-track");
-      return;
-    }
-
-    const data = await response.json();
-    if (!data.points || data.points.length === 0) {
-      // Pas encore de points : ce n'est pas une erreur
-      return;
-    }
-
-    // Tableau [lat, lng] pour Leaflet
-    liveCoords = data.points.map((p) => [p.lat, p.lng]);
-
-    // Polyline du trajet en direct
-    if (!liveLine) {
-      liveLine = L.polyline(liveCoords, {
-        color: "#ffdd00",
-        weight: 4,
-        opacity: 0.95
-      }).addTo(map);
-      tracesGroup.addLayer(liveLine);
-    } else {
-      liveLine.setLatLngs(liveCoords);
-    }
-
-    // Dernier point = position actuelle
-    const lastPoint = liveCoords[liveCoords.length - 1];
-
-    if (!liveMarker) {
-      liveMarker = L.circleMarker(lastPoint, {
-        radius: 6,
-        color: "#000",
-        fillColor: "#ffdd00",
-        fillOpacity: 1
-      })
-        .bindPopup("Position actuelle de Benjamin")
-        .addTo(map);
-      tracesGroup.addLayer(liveMarker);
-
-      // Centrer la carte la première fois
-      map.setView(lastPoint, 5);
-    } else {
-      liveMarker.setLatLng(lastPoint);
-    }
-  } catch (err) {
-    console.error("Erreur lors de updateLiveTrack:", err);
-  }
-}
-
-// Premier appel au chargement
-updateLiveTrack();
-
-// Mise à jour toutes les 10 secondes (10000 ms)
-setInterval(updateLiveTrack, 10000);
 
