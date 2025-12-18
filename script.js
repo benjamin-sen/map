@@ -81,7 +81,7 @@ function addGpx(path, color, name) {
 // --- 3) Ajouter tes deux fichiers GPX ---
 
 // Bleu eigengrau (légèrement bleuté)
-const BLUE_EIGENGRAU = "#1b2430";
+const BLUE = "#a9cbd7";
 
 // Liste de tous les GPX
 const gpxFiles = [
@@ -99,7 +99,7 @@ const gpxFiles = [
 gpxFiles.forEach((file, index) => {
   addGpx(
     "data/" + file,
-    BLUE_EIGENGRAU,
+    BLUE,
     "Trace " + (index + 1)
   );
 });
