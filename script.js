@@ -81,9 +81,32 @@ function addGpx(path, color, name) {
 }
 
 // --- 3) Ajouter tes deux fichiers GPX ---
-// adapte les noms si besoin (trace1.gpx / trace2.gpx)
-addGpx("data/trace1.gpx", "#ff6600", "Trace 1");
-addGpx("data/trace2.gpx", "#00bcd4", "Trace 2");
+// Couleur eigengrau
+const EIGENGRAU = "#16161d";
+
+// Liste de tous les GPX
+const gpxFiles = [
+  "activity_20969223596.gpx",
+  "activity_21024257057.gpx",
+  "activity_21040882598.gpx",
+  "activity_21140677371.gpx",
+  "activity_21140677789.gpx",
+  "activity_21189820883.gpx",
+  "activity_21238517271.gpx",
+  "activity_21276471908.gpx"
+];
+
+// Chargement de tous les GPX avec opacité 0.75
+gpxFiles.forEach(file => {
+  addGpx(
+    "data/" + file,
+    EIGENGRAU,
+    file.replace(".gpx", ""),
+    {
+      opacity: 0.75
+    }
+  );
+});
 
 // --- 4) Contrôle des couches ---
 const baseLayers = {
