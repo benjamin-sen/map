@@ -6,6 +6,8 @@ const map = L.map("map").setView([20, -30], 3);
 // ===============================
 // 2) Fonds de carte
 // ===============================
+
+// Fond principal : Carto Light
 const cartoLight = L.tileLayer(
   "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
   {
@@ -15,6 +17,7 @@ const cartoLight = L.tileLayer(
   }
 ).addTo(map);
 
+// Fond secondaire : GEBCO gris
 const gebcoGray = L.tileLayer(
   "https://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/GEBCO_grayscale_basemap_NCEI/MapServer/tile/{z}/{y}/{x}",
   {
@@ -48,13 +51,7 @@ let gpxLoadedCount = 0;
 const totalGpx = gpxFiles.length;
 
 // ===============================
-// 5) Position actuelle
-// ===============================
-let lastPositionLatLng = null;
-let currentPositionMarker = null;
-
-// ===============================
-// 6) Fonction d’ajout GPX
+// 5) Fonction d’ajout GPX
 // ===============================
 function addGpx(path, color, name) {
   const gpxLayer = new L.GPX(path, {
@@ -73,35 +70,20 @@ function addGpx(path, color, name) {
     .on("loaded", function (e) {
       const gpx = e.target;
 
+      // Ajouter la trace au groupe
       tracesGroup.addLayer(gpx);
 
-      // ✅ POSITION DE FIN (méthode fiable)
-      const endLatLng = gpx.get_end_location();
-      if (endLatLng) {
-        lastPositionLatLng = endLatLng;
-      }
-
+      // Compteur de chargement
       gpxLoadedCount++;
 
-      // Quand tous les GPX sont chargés
+      // Zoom global quand TOUS les GPX sont chargés
       if (gpxLoadedCount === totalGpx) {
-        // Zoom global
         map.fitBounds(tracesGroup.getBounds(), {
           padding: [40, 40]
         });
-
-        // 🔵 Point bleu position actuelle
-        if (lastPositionLatLng) {
-          currentPositionMarker = L.circleMarker(lastPositionLatLng, {
-            radius: 6,
-            color: "#1e90ff",
-            fillColor: "#1e90ff",
-            fillOpacity: 1
-          }).addTo(map);
-        }
       }
 
-      // Popup
+      // Popup d’info
       const distanceKm = (gpx.get_distance() / 1000).toFixed(1);
 
       const start = gpx.get_start_time();
@@ -110,8 +92,8 @@ function addGpx(path, color, name) {
       const html = `
         <strong>${name}</strong><br>
         Distance : ${distanceKm} km<br>
-        Du : ${start ? start.toLocaleDateString("fr-CH") : "?"}<br>
-        Au : ${end ? end.toLocaleDateString("fr-CH") : "?"}
+        Du : ${start ? start.toLocaleDateString("fr-CH") : "date inconnue"}<br>
+        Au : ${end ? end.toLocaleDateString("fr-CH") : "date inconnue"}
       `;
 
       gpx.bindPopup(html);
@@ -122,16 +104,20 @@ function addGpx(path, color, name) {
 }
 
 // ===============================
-// 7) Charger les GPX
+// 6) Chargement des GPX
 // ===============================
 const BLUE = "#7593c7";
 
 gpxFiles.forEach((file, index) => {
-  addGpx("data/" + file, BLUE, "Trace " + (index + 1));
+  addGpx(
+    "data/" + file,
+    BLUE,
+    "Trace " + (index + 1)
+  );
 });
 
 // ===============================
-// 8) Contrôle des couches
+// 7) Contrôle des couches
 // ===============================
 const baseLayers = {
   "Fond clair (Carto)": cartoLight,
