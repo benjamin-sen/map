@@ -114,9 +114,11 @@ gpxFiles.forEach((file, index) => {
 
 // --- 4) Contrôle des couches ---
 const baseLayers = {
-  "GEBCO gris (NOAA)": gebcoGray,
-  "Fond clair (Carto)": cartoLight
+  "Fond clair (Carto)": cartoLight,
+  "GEBCO gris (NOAA)": gebcoGray
 };
+
+L.control.layers(baseLayers, overlays, { collapsed: false }).addTo(map);
 
 const overlays = {
   "Traces bateau": tracesGroup
