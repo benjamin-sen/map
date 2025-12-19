@@ -24,6 +24,19 @@ const cartoLight = L.tileLayer(
 // --- 2) Groupe pour les traces ---
 const tracesGroup = L.layerGroup().addTo(map);
 
+const gpxFiles = [
+  "activity_20969223596.gpx",
+  "activity_21024257057.gpx",
+  "activity_21040882598.gpx",
+  "activity_21140677371.gpx",
+  "activity_21140677789.gpx",
+  "activity_21189820883.gpx",
+  "activity_21238517271.gpx",
+  "activity_21276471908.gpx"
+];
+
+let gpxLoadedCount = 0;
+const totalGpx = gpxFiles.length;
 
 // Petite fonction utilitaire pour ajouter une trace GPX
 function addGpx(path, color, name) {
@@ -46,10 +59,17 @@ function addGpx(path, color, name) {
       // Ajouter la trace au groupe
       tracesGroup.addLayer(gpx);
 
-      // Adapter le zoom à la 1ère trace chargée
-      if (tracesGroup.getLayers().length === 1) {
-        map.fitBounds(gpx.getBounds());
-      }
+      let gpxLoadedCount = 0;
+const totalGpx = gpxFiles.length;
+
+      gpxLoadedCount++;
+
+// Quand tous les GPX sont chargés → zoom global
+if (gpxLoadedCount === totalGpx) {
+  map.fitBounds(tracesGroup.getBounds(), {
+    padding: [40, 40]
+  });
+}
 
       // ---- Infos pour la popup ----
       const distanceKm = (gpx.get_distance() / 1000).toFixed(1); // m -> km
@@ -82,18 +102,6 @@ function addGpx(path, color, name) {
 
 // Bleu eigengrau (légèrement bleuté)
 const BLUE = "#7593c7";
-
-// Liste de tous les GPX
-const gpxFiles = [
-  "activity_20969223596.gpx",
-  "activity_21024257057.gpx",
-  "activity_21040882598.gpx",
-  "activity_21140677371.gpx",
-  "activity_21140677789.gpx",
-  "activity_21189820883.gpx",
-  "activity_21238517271.gpx",
-  "activity_21276471908.gpx"
-];
 
 // Chargement manuel de tous les GPX
 gpxFiles.forEach((file, index) => {
