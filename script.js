@@ -9,17 +9,8 @@ const cartoLight = L.tileLayer(
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; Carto'
   }
-);
-
-// --- 2) Fond GEBCO gris ---
-const gebcoGray = L.tileLayer(
-  "https://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/GEBCO_grayscale_basemap_NCEI/MapServer/tile/{z}/{y}/{x}",
-  {
-    maxZoom: 12,
-    opacity: 0.9,
-    attribution: "GEBCO & NOAA NCEI"
-  }
 ).addTo(map);
+
 
 // --- 2) Groupe pour les traces ---
 const tracesGroup = L.layerGroup().addTo(map);
