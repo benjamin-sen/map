@@ -40,7 +40,7 @@ const gpxFiles = [
   "activity_21024257057.gpx",
   "activity_21040882598.gpx",
   "activity_21140677371.gpx",
-  "activity_21140677789.gpx"
+  "activity_21140677789.gpx",
   "activity_8.gpx",
   "activity_21189820883.gpx",
   "activity_21238517271.gpx",
