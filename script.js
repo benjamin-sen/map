@@ -44,7 +44,8 @@ const gpxFiles = [
   "activity_8.gpx",
   "activity_21189820883.gpx",
   "activity_21238517271.gpx",
-  "activity_21276471908.gpx"
+  "activity_21276471908.gpx",
+  "activity_21385416518.gpx"
 ];
 
 let gpxLoadedCount = 0;
