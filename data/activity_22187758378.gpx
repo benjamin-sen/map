@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="Garmin Connect" version="1.1"
+  xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/11.xsd"
+  xmlns:ns3="http://www.garmin.com/xmlschemas/TrackPointExtension/v1"
+  xmlns="http://www.topografix.com/GPX/1/1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns2="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
+  <metadata>
+    <link href="connect.garmin.com">
+      <text>Garmin Connect</text>
+    </link>
+    <time>2026-02-18T11:23:02.000Z</time>
+  </metadata>
+  <trk>
+    <name>Navigation à la voile</name>
+    <type>sailing_v2</type>
+    <trkseg>
+      <trkpt lat="15.95232252962887287139892578125" lon="-61.4691745676100254058837890625">
+        <time>2026-02-18T12:55:23.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="15.95220719464123249053955078125" lon="-61.4717555232346057891845703125">
+        <time>2026-02-18T12:56:59.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="15.95401617698371410369873046875" lon="-61.52237358503043651580810546875">
+        <time>2026-02-18T13:27:33.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="15.9484283812344074249267578125" lon="-61.56983376480638980865478515625">
+        <time>2026-02-18T13:57:54.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="15.94142873771488666534423828125" lon="-61.614789851009845733642578125">
+        <time>2026-02-18T14:28:07.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="15.9279768727719783782958984375" lon="-61.66102501563727855682373046875">
+        <time>2026-02-18T14:58:19.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="15.9341174550354480743408203125" lon="-61.70919497497379779815673828125">
+        <time>2026-02-18T15:28:54.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="16.0054793022572994232177734375" lon="-61.75676076672971248626708984375">
+        <time>2026-02-18T17:00:23.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="16.0848669894039630889892578125" lon="-61.78064818494021892547607421875">
+        <time>2026-02-18T17:31:25.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="16.1174752749502658843994140625" lon="-61.78549937903881072998046875">
+        <time>2026-02-18T18:01:41.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="16.1313443072140216827392578125" lon="-61.77214340306818485260009765625">
+        <time>2026-02-18T18:32:06.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="16.1313443072140216827392578125" lon="-61.77219604142010211944580078125">
+        <time>2026-02-18T19:02:22.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+      <trkpt lat="16.13387337885797023773193359375" lon="-61.77354586310684680938720703125">
+        <time>2026-02-18T19:32:34.000Z</time>
+        <extensions>
+          <ns3:TrackPointExtension/>
+        </extensions>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>
