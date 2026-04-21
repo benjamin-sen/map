@@ -51,7 +51,9 @@ const gpxFiles = [
   "activity_22187758814.gpx",
   "Navionics_archive_export.gpx",
   "activity_22239821165.gpx",
-  "activity_22251194439.gpx"
+  "activity_22251194439.gpx",
+  "Track_1.gpx",
+  "Track_2.gpx"
 ];
 
 let gpxLoadedCount = 0;
